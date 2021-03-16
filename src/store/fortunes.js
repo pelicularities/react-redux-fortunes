@@ -1,3 +1,5 @@
+import { ADD_FORTUNE } from "../actions";
+
 const initialState = {
   predictions: [
     {
@@ -15,7 +17,15 @@ const initialState = {
 };
 
 function fortunesReducer(state = initialState, action) {
+  console.log("inside fortunesReducer");
   switch (action.type) {
+    case ADD_FORTUNE: {
+      console.log("inside ADD_FORTUNE case");
+      return {
+        ...state,
+        predictions: [...state.predictions, action.payload],
+      };
+    }
     default:
       return state;
   }
